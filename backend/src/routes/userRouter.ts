@@ -20,7 +20,7 @@ userRouter.post("/signup", async (c) => {
     return c.json({ error: result.error.errors }, 400);
   }
 
-  const { name, password, username } = result.data;
+  const { username: email, password } = result.data;
 
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
@@ -33,9 +33,9 @@ userRouter.post("/signup", async (c) => {
     // Create user in the database
     const newUser = await prisma.user.create({
       data: {
-        name,
+        email,
         password: hashedPassword,
-        email: username,
+        username: result.data.username,
       },
     });
 
@@ -49,7 +49,11 @@ userRouter.post("/signup", async (c) => {
     return c.json(
       {
         message: "User created successfully",
-        user: { id: newUser.id, email: newUser.email, name: newUser.name },
+        user: {
+          id: newUser.id,
+          email: newUser.email,
+          username: newUser.username,
+        },
         token,
       },
       201
@@ -75,16 +79,16 @@ userRouter.post("/signin", async (c) => {
     return c.json({ error: result.error.errors }, 400);
   }
 
-  const { username, password } = result.data;
+  const { username: email, password } = result.data;
 
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
 
   try {
-    // Find the user by email (username)
+    // Find the user by email
     const user = await prisma.user.findUnique({
-      where: { email: username },
+      where: { email },
     });
 
     if (!user) {
@@ -108,7 +112,7 @@ userRouter.post("/signin", async (c) => {
     return c.json(
       {
         message: "Sign-in successful",
-        user: { id: user.id, name: user.name, email: user.email },
+        user: { id: user.id, username: user.username, email: user.email },
         token,
       },
       200

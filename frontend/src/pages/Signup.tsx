@@ -1,7 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import AuthHeader from "../components/AuthHeader";
 
+import { SignupInput } from "@shreyasprabhu26/medium-common";
+
 const Signup = () => {
+  const signUpPayLoad: SignupInput = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
