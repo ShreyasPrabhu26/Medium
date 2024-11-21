@@ -2,9 +2,9 @@ import z from "zod";
 
 // Schema for user signup input
 export const signupInput = z.object({
-  username: z.string().email(),
-  password: z.string().min(6),
-  name: z.string().optional(),
+  email: z.string().email(),
+  username: z.string().min(4).max(15),
+  password: z.string().min(4).max(20),
 });
 
 export type SignupInput = z.infer<typeof signupInput>;
