@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { sign } from "hono/jwt";
 import bcrypt from "bcryptjs";
-import { signupInput } from "@shreyasprabhu26/medium-common";
+import { signinInput, signupInput } from "@shreyasprabhu26/medium-common";
 export const userRouter = new Hono();
 // Route for user signup
 userRouter.post("/signup", async (c) => {
