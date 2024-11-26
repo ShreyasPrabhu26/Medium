@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { sign } from "hono/jwt";
 import bcrypt from "bcryptjs";
+
 import { signinInput, signupInput } from "@shreyasprabhu26/medium-common";
 
 export const userRouter = new Hono<{
@@ -20,7 +21,7 @@ userRouter.post("/signup", async (c) => {
     return c.json({ error: result.error.errors }, 400);
   }
 
-  const { username: email, password } = result.data;
+  const { email, username, password } = result.data;
 
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
@@ -79,7 +80,7 @@ userRouter.post("/signin", async (c) => {
     return c.json({ error: result.error.errors }, 400);
   }
 
-  const { username: email, password } = result.data;
+  const { email, password } = result.data;
 
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,

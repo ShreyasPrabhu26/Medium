@@ -46,7 +46,9 @@ blogRouter.get("/blogs", async (c) => {
         // If authorId is provided, filter by authorId
         ...(authorId ? { authorId } : { published: true }),
       },
-      include: { author: { select: { id: true, name: true, email: true } } },
+      include: {
+        author: { select: { id: true, username: true, email: true } },
+      },
     });
 
     return c.json(blogs);
@@ -73,7 +75,7 @@ blogRouter.get("/:id", async (c) => {
           select: {
             id: true,
             email: true,
-            name: true,
+            username: true,
           },
         },
       },
