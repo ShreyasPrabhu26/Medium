@@ -34,9 +34,9 @@ userRouter.post("/signup", async (c) => {
     // Create user in the database
     const newUser = await prisma.user.create({
       data: {
+        username,
         email,
         password: hashedPassword,
-        username: result.data.username,
       },
     });
 
@@ -62,9 +62,9 @@ userRouter.post("/signup", async (c) => {
   } catch (error: any) {
     console.error(error);
 
-    // Handle unique constraint violation (if email is already registered)
+    // Handle unique constraint violation (if username-email is already registered)
     if (error.code === "P2002") {
-      return c.json({ error: "Email is already registered." }, 400);
+      return c.json({ error: "Username or Email is already registered." }, 400);
     }
 
     // Return generic error message for other errors
