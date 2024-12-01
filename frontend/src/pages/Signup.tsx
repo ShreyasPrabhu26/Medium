@@ -34,12 +34,9 @@ const Signup = () => {
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
         <AuthHeader />
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mt-6">
           <form className="card-body" onSubmit={handleUserSignUp}>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Username</span>
-              </label>
               <input
                 type="text"
                 placeholder="Username"
@@ -56,9 +53,6 @@ const Signup = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
               <input
                 type="email"
                 placeholder="Email"
@@ -71,9 +65,6 @@ const Signup = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
               <input
                 type="password"
                 placeholder="Password"
@@ -93,13 +84,13 @@ const Signup = () => {
                 Sign Up
               </button>
             </div>
+            <div className="text-center mt-4">
+              <span>Already a User? </span>
+              <Link to={"/signin"} className="link link-primary">
+                Sign In
+              </Link>
+            </div>
           </form>
-          <footer className="text-center mb-5 space-x-5">
-            <span>Already a User?</span>
-            <Link to={"/signin"} className="underline">
-              LOGIN HERE!
-            </Link>
-          </footer>
         </div>
       </div>
     </div>

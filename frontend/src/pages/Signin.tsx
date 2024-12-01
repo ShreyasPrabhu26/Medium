@@ -34,9 +34,6 @@ const Signin = () => {
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form className="card-body" onSubmit={handleUserLogin}>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
               <input
                 type="email"
                 placeholder="Email"
@@ -50,9 +47,6 @@ const Signin = () => {
               />
             </div>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
               <input
                 type="password"
                 placeholder="Password"
