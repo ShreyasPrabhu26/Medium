@@ -13,11 +13,11 @@ const HomePage = () => {
       <Hero />
       <SectionTitle
         preTitle="Blog Bloom Benefits"
-        title="Why should you use this landing page"
+        title="Your Stories Deserve to Bloom"
       >
-        Blog Bloom is a free landing page & marketing website template for
-        startups and indie projects. Its built with Next.js & TailwindCSS. And
-        its completely open-source.
+        Blog Bloom is where ideas flourish and stories come to life. Share your
+        passion, connect with readers, and join a community of creative minds
+        ready to inspire and be inspired.
       </SectionTitle>
 
       <Benefits data={benefitOne} />
@@ -25,10 +25,10 @@ const HomePage = () => {
 
       <SectionTitle
         preTitle="Testimonials"
-        title="Here's what our customers said"
+        title="Here's what our writers say"
       >
-        Testimonials is a great way to increase the brand trust and awareness.
-        Use this section to highlight your popular customers.
+        Discover what fellow bloggers and content creators have experienced on their
+        journey with Blog Bloom. Join our thriving community of storytellers.
       </SectionTitle>
 
       <Testimonials />
